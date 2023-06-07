@@ -15,6 +15,26 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.125rem;
   line-height: 1.5;
+  &::after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: aqua;
+    position: fixed;
+    bottom: 100px;
+  }
+}
+
+.animTrigger {
+  position: relative;
+  &::after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: fuchsia;
+    position: absolute;
+    top: 75%;
+  }
 }
 
 main {
@@ -26,7 +46,7 @@ main {
 }
 
 section {
-  scroll-snap-align: center;
+  // scroll-snap-align: center;
   overflow: hidden;
 }
 

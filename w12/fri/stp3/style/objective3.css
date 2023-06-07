@@ -15,6 +15,26 @@ body {
   font-size: 1.125rem;
   line-height: 1.5;
 }
+body::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: aqua;
+  position: fixed;
+  bottom: 100px;
+}
+
+.animTrigger {
+  position: relative;
+}
+.animTrigger::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: fuchsia;
+  position: absolute;
+  top: 75%;
+}
 
 main {
   width: 100%;
@@ -25,7 +45,6 @@ main {
 }
 
 section {
-  scroll-snap-align: center;
   overflow: hidden;
 }
 
