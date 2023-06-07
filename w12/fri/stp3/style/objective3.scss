@@ -36,7 +36,7 @@ section:nth-child(even) {
 
 .wrapper {
   width: min(60ch, 100% - 4rem);
-  min-height: max(50rem, 100dvh);
+  min-height: max(600px, 100dvh);
   margin-inline: auto;
   display: flex;
   flex-direction: column;
