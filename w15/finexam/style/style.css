@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "cube";
+  src: url(../fonts/a큐브.ttf) format("truetype");
+}
+* {
+  font-family: "cube";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #111111;
+  text-wrap: balance;
+  word-break: keep-all;
+  font-style: italic;
+}
+body h1 {
+  font-size: 4rem;
+  font-weight: 200;
+}
+body h2 {
+  font-size: 2.5rem;
+  font-weight: 200;
+}
+body h3 {
+  font-size: 1.75rem;
+  font-weight: 200;
+  padding: 1rem;
+}
+body .hide {
+  display: none;
+}
+body aside {
+  display: none;
+}
+body aside a {
+  text-decoration: none;
+}
+
+src {
+  overflow: hidden;
+}
+
+section {
+  margin-inline: 2rem;
+}
+
+.prologue {
+  background-color: #f3f3f3;
+  color: #111111;
+  text-align: center;
+}
+
+#prologue0 {
+  padding-top: 9rem;
+  font-size: 2.8rem;
+}
+
+#prologue1 {
+  padding-top: 5rem;
+}
+#prologue1 .container {
+  display: flex;
+  justify-content: center;
+}
+#prologue1 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+#prologue2 {
+  padding-top: 8rem;
+  font-size: 1rem;
+}
