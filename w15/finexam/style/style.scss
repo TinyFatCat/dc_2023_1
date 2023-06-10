@@ -1,4 +1,6 @@
+@charset "UTF-8";
 @font-face {
+  font-family: "Noto Sans KR", sans-serif;
   font-family: "cube";
   src: url(../fonts/a큐브.ttf) format("truetype");
 }
@@ -9,74 +11,118 @@
   padding: 0;
 }
 
+// 텍스트 관련 설정
 body {
+  font-family: "cube";
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  color: #111111;
+  color: #222222;
   text-wrap: balance;
   word-break: keep-all;
   font-style: italic;
-  h1 {
-    font-size: 4rem;
-    font-weight: 200;
-  }
+}
 
-  h2 {
-    font-size: 2.5rem;
-    font-weight: 200;
-  }
-  h3 {
-    font-size: 1.75rem;
-    font-weight: 200;
-    padding: 1rem;
-  }
+h1 {
+  font-size: 4rem;
+  font-weight: 200;
+}
+h2 {
+  font-size: 2.5rem;
+  font-weight: 200;
+}
+h3 {
+  font-size: 1.75rem;
+  font-weight: 200;
+}
+p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  padding-block: 1rem;
+}
 
-  .hide {
-    display: none;
-  }
-
-  aside {
-    display: none;
-    a {
-      text-decoration: none;
+body .hide {
+  display: none;
+}
+body aside {
+  display: none;
+  a {
+    text-decoration: none;
   }
 }
+
 src {
   overflow: hidden;
 }
 
 section {
-  margin-inline: 2rem;
+  // margin-inline: 2rem;
 }
 
 .prologue {
   background-color: #f3f3f3;
-  color: #111111;
   text-align: center;
 }
 
 #prologue0 {
-  padding-top: 9rem;
-  font-size: 2.8rem;
+  margin-inline: 0;
+  padding-block: 9rem 4rem;
+  // font-size: 2.8rem;
+  color: white;
+  background-color: #222222;
 }
 
 #prologue1 {
-  padding-top: 5rem;
-  .container {
-    display: flex;
-    justify-content: center;
+  padding-block: 2rem 2rem;
+  background-color: #2d2d2d;
+}
+#prologue1 .container {
+  display: flex;
+  justify-content: center;
+}
+#prologue1 .wrapper {
+  max-width: 300px;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  background-color: #f7f7f7;
+  h3 {
+    padding-top: 0.5rem;
   }
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    align-items: center;
-    padding: 1rem;
+  p {
+    padding-inline: 1rem;
+    color: #555555;
   }
 }
 
 #prologue2 {
-  padding-top: 8rem;
-  font-size: 1rem;
+  padding-block: 3rem;
+  color: #888888;
+  background-color: #383838;
+  h3 {
+    padding-top: 0.5rem;
+    color: white;
+  }
+  .grad1 {
+    min-height: 800px;
+    background: linear-gradient(to bottom, #383838, #111111);
+  }
+  .grad2 {
+    min-height: 800px;
+    background: linear-gradient(to bottom, #111111, #383838);
+  }
+}
+
+.switch {
+  background-color: #111111;
+  display: flex;
+  justify-content: center;
+}
+
+#section1 {
+  .wrapper {
+    text-align: center;
+  }
 }

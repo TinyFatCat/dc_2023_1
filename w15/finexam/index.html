@@ -3,8 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style/style.css" />
     <title>DC231: Final Examination</title>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
   </head>
   <body>
     <header></header>
@@ -12,10 +20,10 @@
       <div class="prologue">
         <section id="prologue0">
           <div class="wrapper">
-            <p>
+            <h2>
               더욱 몰입감있는 시청을 위해<br />
               아래 주의사항을 숙지해주세요
-            </p>
+            </h2>
           </div>
         </section>
         <section id="prologue1">
@@ -37,7 +45,7 @@
             </div>
             <div class="wrapper">
               <lottie-player
-                src="../finexam/asset/switch.json"
+                src="../finexam/asset/soundactive.json"
                 background="transparent"
                 speed="1"
                 style="width: 300px; height: 300px"
@@ -52,14 +60,14 @@
             </div>
             <div class="wrapper">
               <lottie-player
-                src="../finexam/asset/switch.json"
+                src="../finexam/asset/soundactive.json"
                 background="transparent"
                 speed="1"
                 style="width: 300px; height: 300px"
                 loop
                 autoplay
               ></lottie-player>
-              <h3>콘텐츠 시청 연령제한이 있어요</h3>
+              <h3>콘텐츠 연령제한</h3>
               <p>
                 본 스토리 원작은 한국에서 12세 이용가 심의를 받았습니다.
                 <br />
@@ -77,9 +85,22 @@
             </p>
             <h3>모두 읽었다면, 아래로 스크롤하기</h3>
           </div>
+          <div class="grad1"></div>
+          <div class="wrapper switch">
+            <lottie-player
+              id="switch"
+              src="../finexam/asset/switch.json"
+              style="width: 800px; height: 800px"
+              >"></lottie-player
+            >
+          </div>
+          <div class="grad2"></div>
         </section>
       </div>
       <section id="section1">
+        <div class="wrapper">
+          <h2>전설의 탄생, 그리고 시작</h2>
+        </div>
         <div class="wrapper">
           <h1>제 1장</h1>
           <h2>혼돈의 시작</h2>
@@ -226,4 +247,17 @@
     </aside>
     <footer></footer>
   </body>
+  <script>
+    LottieInteractivity.create({
+      mode: "scroll",
+      player: "#switch",
+      actions: [
+        {
+          visibility: [0, 1],
+          type: "seek",
+          frames: [0, 80],
+        },
+      ],
+    });
+  </script>
 </html>
