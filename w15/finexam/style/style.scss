@@ -5,14 +5,23 @@
   src: url(../fonts/a큐브.ttf) format("truetype");
 }
 
+$wrapper-padding-inline: 2rem;
+$min-height: 2rem;
+$progressBar-height: 1rem;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 // 텍스트 관련 설정
 body {
+  background-color: #c7c7c7;
   font-family: "cube";
   margin: 0;
   padding: 0;
@@ -24,33 +33,35 @@ body {
 }
 
 h1 {
+  padding-top: 4rem;
+  text-align: center;
   font-size: 4rem;
   font-weight: 200;
 }
 h2 {
   font-size: 2.5rem;
   font-weight: 200;
+  padding-bottom: 1rem;
 }
 h3 {
   font-size: 1.75rem;
   font-weight: 200;
 }
 p {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1.125rem;
+  font-family: "cube";
+  font-size: 1.375rem;
   padding-block: 1rem;
+  color: #2d2d2d;
 }
 
-body .hide {
+.hide {
   display: none;
 }
-body aside {
-  a {
-    text-decoration: none;
-  }
-}
 
-src {
+img,
+video,
+svg {
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -58,9 +69,14 @@ section {
   text-align: center;
 }
 
-.prologue {
+prologue {
   background-color: #f3f3f3;
   text-align: center;
+  p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem;
+    padding-bottom: 1rem;
+  }
 }
 
 #prologue0 {
@@ -74,25 +90,26 @@ section {
 #prologue1 {
   padding-block: 2rem 2rem;
   background-color: #2d2d2d;
-}
-#prologue1 .container {
-  display: flex;
-  justify-content: center;
-}
-#prologue1 .wrapper {
-  max-width: 300px;
-  border-radius: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-  background-color: #f7f7f7;
-  h3 {
-    padding-top: 0.5rem;
+  .container {
+    display: flex;
+    justify-content: center;
+    background-color: unset;
   }
-  p {
-    padding-inline: 1rem;
-    color: #555555;
+  .wrapper {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    max-width: 18.5rem;
+    border-radius: 0.75rem;
+    margin: 1rem;
+    background-color: #f7f7f7;
+    h3 {
+      padding-top: 1.5rem;
+    }
+    p {
+      padding-inline: 1rem;
+      color: #555555;
+    }
   }
 }
 
@@ -102,35 +119,117 @@ section {
   background-color: #383838;
   h3 {
     padding-top: 0.5rem;
-    color: white;
+    color: #f3f3f3;
   }
   .grad1 {
     min-height: 700px;
     background: linear-gradient(to bottom, #383838, #111111);
   }
   .grad2 {
-    min-height: 300px;
+    min-height: 600px;
     background: linear-gradient(to bottom, #111111, #383838);
+  }
+  p {
+    color: #888888;
   }
 }
 
 .switch {
-  background-color: #d60000;
+  margin: 0;
+  padding: 0;
+  // background-color: #d60000;
   display: flex;
   justify-content: center;
 }
 
-#section1 {
+.chapter--begin {
+  margin-inline: auto;
   text-align: center;
-  .chapter0 {
-    color: white;
+  background-color: #383838;
+  padding-block: 4rem;
+  color: white;
+  &--first {
     background-color: #383838;
+    padding-bottom: 3.5rem;
+    color: white;
   }
-  h1 {
-    padding-block: 2rem 4rem;
-    margin-bottom: 2rem;
+  &--typo {
+    text-align: center;
+    background-color: #c6cc93;
+    padding-block: 3rem;
+    color: #383838;
   }
 }
 
-#section2 {
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  max-width: 75rem;
+  background-color: #f3f3f3;
+  .wrapper {
+    display: block;
+    justify-content: center;
+  }
+  p {
+    padding-block: 2rem 6rem;
+    padding-inline: 3.5rem;
+  }
+}
+
+.stickyWrapper {
+  display: grid;
+  grid-template-columns: fit-content(0) 1fr;
+  grid-template-rows: 1fr;
+}
+
+main {
+  z-index: 1;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+aside {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  grid-column: 1;
+  grid-row: 1;
+  width: 140px;
+  height: max(100dvh, $min-height);
+  padding-inline: 1rem 1.5rem;
+  border-radius: 0 1rem 1rem 0;
+  background-color: rgba(56, 56, 56, 85%);
+  backdrop-filter: blur(0.25rem);
+  font-size: 0.875rem;
+  text-decoration: none;
+  list-style: none;
+  h3 {
+    color: #d1d1d1;
+    font-family: "cube";
+    font-size: 1.2rem;
+    list-style: none;
+    margin-block: 2rem 1rem;
+  }
+  ol {
+    font-family: "Noto Sans KR", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+    list-style: none;
+    li {
+      display: flex;
+      flex-direction: row;
+      text-align: left;
+      padding-left: 0.125rem;
+      padding-block: 0.25rem;
+      color: #c4c4c4;
+      font-weight: 500;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
 }

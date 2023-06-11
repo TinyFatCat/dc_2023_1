@@ -149,7 +149,7 @@ footer .wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
   }
   aside ol a:first-of-type li {
     margin-left: 2rem;

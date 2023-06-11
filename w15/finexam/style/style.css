@@ -10,7 +10,12 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  background-color: #c7c7c7;
   font-family: "cube";
   margin: 0;
   padding: 0;
@@ -22,6 +27,8 @@ body {
 }
 
 h1 {
+  padding-top: 4rem;
+  text-align: center;
   font-size: 4rem;
   font-weight: 200;
 }
@@ -29,6 +36,7 @@ h1 {
 h2 {
   font-size: 2.5rem;
   font-weight: 200;
+  padding-bottom: 1rem;
 }
 
 h3 {
@@ -37,23 +45,20 @@ h3 {
 }
 
 p {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1.125rem;
+  font-family: "cube";
+  font-size: 1.375rem;
   padding-block: 1rem;
+  color: #2d2d2d;
 }
 
-body .hide {
+.hide {
   display: none;
 }
 
-body aside {
-  display: none;
-}
-body aside a {
-  text-decoration: none;
-}
-
-src {
+img,
+video,
+svg {
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -61,9 +66,14 @@ section {
   text-align: center;
 }
 
-.prologue {
+prologue {
   background-color: #f3f3f3;
   text-align: center;
+}
+prologue p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  padding-bottom: 1rem;
 }
 
 #prologue0 {
@@ -77,23 +87,22 @@ section {
   padding-block: 2rem 2rem;
   background-color: #2d2d2d;
 }
-
 #prologue1 .container {
   display: flex;
   justify-content: center;
+  background-color: unset;
 }
-
 #prologue1 .wrapper {
-  max-width: 300px;
-  border-radius: 0.75rem;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  justify-content: center;
   align-items: center;
+  max-width: 18.5rem;
+  border-radius: 0.75rem;
   margin: 1rem;
   background-color: #f7f7f7;
 }
 #prologue1 .wrapper h3 {
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
 }
 #prologue1 .wrapper p {
   padding-inline: 1rem;
@@ -107,31 +116,116 @@ section {
 }
 #prologue2 h3 {
   padding-top: 0.5rem;
-  color: white;
+  color: #f3f3f3;
 }
 #prologue2 .grad1 {
   min-height: 700px;
   background: linear-gradient(to bottom, #383838, #111111);
 }
 #prologue2 .grad2 {
-  min-height: 300px;
+  min-height: 600px;
   background: linear-gradient(to bottom, #111111, #383838);
+}
+#prologue2 p {
+  color: #888888;
 }
 
 .switch {
-  background-color: #d60000;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
 }
 
-#section1 {
+.chapter--begin {
+  margin-inline: auto;
   text-align: center;
-}
-#section1 .chapter0 {
-  color: white;
   background-color: #383838;
+  padding-block: 4rem;
+  color: white;
 }
-#section1 h1 {
-  padding-block: 2rem 4rem;
-  margin-bottom: 2rem;
+.chapter--begin--first {
+  background-color: #383838;
+  padding-bottom: 3.5rem;
+  color: white;
+}
+.chapter--begin--typo {
+  text-align: center;
+  background-color: #c6cc93;
+  padding-block: 3rem;
+  color: #383838;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  max-width: 75rem;
+  background-color: #f3f3f3;
+}
+.container .wrapper {
+  display: block;
+  justify-content: center;
+}
+.container p {
+  padding-block: 2rem 6rem;
+  padding-inline: 3.5rem;
+}
+
+.stickyWrapper {
+  display: grid;
+  grid-template-columns: fit-content(0) 1fr;
+  grid-template-rows: 1fr;
+}
+
+main {
+  z-index: 1;
+  grid-column: 1/span 2;
+  grid-row: 1;
+}
+
+aside {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+  grid-column: 1;
+  grid-row: 1;
+  width: 140px;
+  height: max(100dvh, 2rem);
+  padding-inline: 1rem 1.5rem;
+  border-radius: 0 1rem 1rem 0;
+  background-color: rgba(56, 56, 56, 0.85);
+  -webkit-backdrop-filter: blur(0.25rem);
+          backdrop-filter: blur(0.25rem);
+  font-size: 0.875rem;
+  text-decoration: none;
+  list-style: none;
+}
+aside h3 {
+  color: #d1d1d1;
+  font-family: "cube";
+  font-size: 1.2rem;
+  list-style: none;
+  margin-block: 2rem 1rem;
+}
+aside ol {
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: auto;
+  list-style: none;
+}
+aside ol li {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  padding-left: 0.125rem;
+  padding-block: 0.25rem;
+  color: #c4c4c4;
+  font-weight: 500;
+}
+aside a {
+  text-decoration: none;
 }
