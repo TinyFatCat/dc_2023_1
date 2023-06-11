@@ -38,7 +38,7 @@ h3 {
 
 p {
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 1rem;
+  font-size: 1.125rem;
   padding-block: 1rem;
 }
 
@@ -55,6 +55,10 @@ body aside a {
 
 src {
   overflow: hidden;
+}
+
+section {
+  text-align: center;
 }
 
 .prologue {
@@ -106,20 +110,28 @@ src {
   color: white;
 }
 #prologue2 .grad1 {
-  min-height: 800px;
+  min-height: 700px;
   background: linear-gradient(to bottom, #383838, #111111);
 }
 #prologue2 .grad2 {
-  min-height: 800px;
+  min-height: 300px;
   background: linear-gradient(to bottom, #111111, #383838);
 }
 
 .switch {
-  background-color: #111111;
+  background-color: #d60000;
   display: flex;
   justify-content: center;
 }
 
-#section1 .wrapper {
+#section1 {
   text-align: center;
+}
+#section1 .chapter0 {
+  color: white;
+  background-color: #383838;
+}
+#section1 h1 {
+  padding-block: 2rem 4rem;
+  margin-bottom: 2rem;
 }
