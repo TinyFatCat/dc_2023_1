@@ -6,8 +6,8 @@
 }
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 html {
@@ -17,13 +17,16 @@ html {
 body {
   background-color: #c7c7c7;
   font-family: "cube";
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   line-height: 1.6;
   color: #222222;
   text-wrap: balance;
   word-break: keep-all;
   font-style: italic;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 h1 {
