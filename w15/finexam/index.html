@@ -17,17 +17,17 @@
   <body>
     <header></header>
     <prologue>
-      <section id="prologue0">
-        <div class="wrapper">
+      <section id="prologue0" class="animTrigger">
+        <div class="wrapper animTarget">
           <h2>
             더욱 몰입감있는 시청을 위해<br />
             아래 주의사항을 숙지해주세요
           </h2>
         </div>
       </section>
-      <section id="prologue1">
+      <section id="prologue1" class="animTrigger">
         <div class="container">
-          <div class="wrapper">
+          <div class="wrapper animTarget">
             <lottie-player
               src="../finexam/asset/soundactive.json"
               background="transparent"
@@ -76,8 +76,8 @@
           </div>
         </div>
       </section>
-      <section id="prologue2">
-        <div class="wrapper">
+      <section id="prologue2" class="animTrigger">
+        <div class="wrapper animTarget">
           <p>
             모든 Lottie 파일은 직접 제작하였으며, <br />
             사용된 일부 이미지는 Ai를 이용해 제작했습니다. <br />
@@ -217,10 +217,12 @@
                 다가오고 있었으니…
               </p>
               <img src="" alt="" />
-              <p>
-                “대지에 재앙 ‘가논 부활의 징조’가 있노라…. <br />그러나 가논에
-                대항할 힘 또한 대지에 잠들어있으니….”
-              </p>
+              <div class="wrapper--dialog">
+                <h2>
+                  “대지에 재앙 ‘가논 부활의 징조’가 있노라…. <br />그러나 가논에
+                  대항할 힘 또한 대지에 잠들어있으니….”
+                </h2>
+              </div>
               <p>
                 유능한 점술가가 재앙 가논의 부활을 예언하며 재앙의 전조가
                 나타나기 시작했다. <br />
@@ -466,8 +468,11 @@
       </aside>
       <div class="progressBar"><div class="indicator"></div></div>
     </div>
+    <link rel="stylesheet" href="" />
     <footer></footer>
   </body>
+  <script src="script/index.js"></script>
+  <script src="script/progressBar.js" defer></script>
   <script>
     LottieInteractivity.create({
       mode: "scroll",

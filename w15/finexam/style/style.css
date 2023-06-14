@@ -6,8 +6,8 @@
 }
 * {
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -17,8 +17,6 @@ html {
 body {
   background-color: #c7c7c7;
   font-family: "cube";
-  margin: 0px;
-  padding: 0px;
   line-height: 1.6;
   color: #222222;
   text-wrap: balance;
@@ -144,7 +142,7 @@ prologue p {
   margin-inline: auto;
   text-align: center;
   background-color: #383838;
-  padding-block: 4rem;
+  padding-block: 6rem;
   color: white;
 }
 .chapter--begin--first {
@@ -168,8 +166,20 @@ prologue p {
   background-color: #f3f3f3;
 }
 .container .wrapper {
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.container .wrapper--dialog {
+  background-image: url("../img/texture/tex_vintage.jpg");
+  background-position: center;
+  padding-block: 20rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  color: rgb(36, 36, 36);
+}
+.container .wrapper--dialog h2 {
+  padding-block: 0;
 }
 .container p {
   padding-block: 2rem 6rem;
@@ -231,4 +241,20 @@ aside ol li {
 }
 aside a {
   text-decoration: none;
+}
+
+.animTarget {
+  opacity: 0;
+  transition: transform 1000ms ease-out, opacity 1000ms;
+}
+
+.triggered .animTarget {
+  opacity: 1;
+}
+
+#prologue1 .animTarget {
+  transition: transform 500ms ease-in-out;
+}
+#prologue1 .triggered .animTarget {
+  transform: translateX(0);
 }
