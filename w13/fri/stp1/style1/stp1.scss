@@ -172,7 +172,6 @@ footer {
       }
     }
   }
-
   .progressBar {
     grid-column: 1;
     grid-row: 1;
@@ -182,6 +181,8 @@ footer {
 @media (width < 59.2rem) {
   aside {
     ol {
+      display: flex;
+      flex-direction: column;
       justify-content: flex-start;
     }
   }

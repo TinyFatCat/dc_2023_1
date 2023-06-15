@@ -1,7 +1,7 @@
 const options = {
   root: null,
-  rootMargin: "0px",
-  threshold: [1.0],
+  rootMargin: "700px 0px 0px 0px",
+  threshold: [0.5],
 };
 
 const callback = (triggers, observer) => {

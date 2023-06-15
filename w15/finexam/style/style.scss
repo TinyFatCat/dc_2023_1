@@ -6,7 +6,9 @@
 }
 
 $min-height: 2rem;
-$progressBar-height: 1rem;
+$padding-inline-value: 2rem;
+$wrapper-padding-inline: 2rem;
+$progressBar-height: 0.75rem;
 
 * {
   box-sizing: border-box;
@@ -20,6 +22,7 @@ html {
 
 // 텍스트 관련 설정
 body {
+  overflow-x: hidden;
   background-color: #c7c7c7;
   font-family: "cube";
   line-height: 1.6;
@@ -31,6 +34,10 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  // -ms-overflow-style: none;
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
 }
 
 h1 {
@@ -61,6 +68,7 @@ p {
 
 img,
 video,
+iframe,
 svg {
   max-width: 100%;
   overflow: hidden;
@@ -80,20 +88,29 @@ prologue {
   padding-block: 9rem 4rem;
   color: white;
   background-color: #222222;
+  // 옵저버 필요x
+  .animTarget {
+    animation: fadeIn 2s ease-in forwards, slideIn_down 3s ease-out forwards;
+  }
 }
 #prologue1 {
-  padding-block: 2rem 2rem;
+  padding-block: 2rem;
   background-color: #2d2d2d;
   .container {
+    // overflow: scroll;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     background-color: unset;
   }
   .wrapper {
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 18.5rem;
+    width: max(30%, 240px);
+    height: max(60vh, 560px);
+    margin-inline: auto;
     border-radius: 0.75rem;
     margin: 1rem;
     background-color: #f7f7f7;
@@ -104,6 +121,10 @@ prologue {
       padding-inline: 1rem;
       color: #555555;
     }
+  }
+  // 옵저버 필요x
+  .animTarget {
+    animation: fadeIn 2.5s ease-in-out forwards, slideIn_up 3s ease-out forwards;
   }
 }
 #prologue2 {
@@ -124,6 +145,14 @@ prologue {
   }
   p {
     color: #888888;
+  }
+  .animTarget {
+    transform: translateY(0);
+  }
+  .triggered {
+    .animTarget {
+      animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-in forwards;
+    }
   }
 }
 
@@ -151,29 +180,67 @@ prologue {
     background-color: #c6cc93;
     padding-block: 3rem;
     color: #383838;
+    &.triggered {
+      .animTarget {
+        animation: fadeIn 1.5s ease-in-out forwards;
+      }
+    }
   }
 }
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-inline: auto;
-  max-width: 75rem;
+  width: min(80%, 1100px);
   background-color: #f3f3f3;
   .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     &--dialog {
+      overflow: hidden;
       background-image: url("../img/texture/tex_vintage.jpg");
       background-position: center;
-      padding-block: 20rem;
+      padding-inline: 16rem;
+      padding-block: 10rem;
       margin-bottom: 4rem;
       text-align: center;
       color: rgb(36, 36, 36);
       h2 {
         padding-block: 0;
+      }
+    }
+    &--card {
+      display: flex;
+      align-items: center;
+      overflow: scroll;
+      margin-bottom: 12rem;
+    }
+    &--card--content {
+      position: relative;
+      text-align: right;
+      min-width: 60%;
+      margin-inline: 0.5rem;
+      h3 {
+        position: absolute;
+        padding: 0;
+        font-size: 3.5rem;
+        color: #ffffff;
+        bottom: 1rem;
+        right: 2rem;
+      }
+      p {
+        position: absolute;
+        padding: 0;
+        color: #ffffff;
+        bottom: 5.4rem;
+        right: 2rem;
+      }
+      img {
+        border-radius: 16px;
       }
     }
   }
@@ -193,6 +260,773 @@ main {
   z-index: 1;
   grid-column: 1 / span 2;
   grid-row: 1;
+  text-align: center;
+}
+
+// Key Animation
+#s1 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 0.75s ease-out forwards,
+          fadeIn 1.5s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 1.5s ease-out forwards,
+          fadeIn 1.5s ease-out forwards, wigglepos 1.5s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+}
+#s2 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2.5s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1.5s ease-out forwards,
+          fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 2s ease-out forwards,
+          fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+}
+#s3 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 2s ease-out forwards,
+          fadeIn 1.5s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_left 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_right 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--5 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 1s ease-out forwards, fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--6 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+}
+#s4 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 2s ease-out forwards,
+          fadeIn 1.5s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_left 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1.5s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+}
+#s5 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_right 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 2s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_right 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--5 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_right 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--6 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 0.75s ease-out forwards;
+      }
+    }
+  }
+  &--7 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1.5s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+}
+#s6 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1s ease-in forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 2s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_left 1.25s ease-out forwards,
+          fadeIn 0.75s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1.25s ease-out forwards,
+          fadeIn 0.75s ease-out forwards;
+      }
+    }
+  }
+  &--5 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+}
+#s7 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-in-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: wigglepos 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--2-2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 0.75s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 0.75s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3-2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 1.5s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--5 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_left 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--6 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1.5s ease-out forwards,
+          fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--7 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: wigglepos 1.25s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--8 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: wigglepos 0.75s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--9 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 2s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--10 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--11 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_left 1s ease-out forwards,
+          fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--12 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--13 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--14 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: wigglepos 1s ease-out forwards, fadeIn 1.5s ease-out forwards;
+      }
+    }
+  }
+}
+#s8 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 2s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--2-2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--2-2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 0.75s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--3-2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 1.5s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--5 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_left 1.5s ease-out forwards,
+          fadeIn 0.5s ease-out forwards;
+      }
+    }
+  }
+  &--6 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--7 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_down 1s ease-out forwards,
+          fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--8 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--9 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--10 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+}
+#s9 {
+  &--1 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--2 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
+  &--3 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 1s ease-out forwards, fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--4 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: slideIn_up 1s ease-out forwards, fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+  &--5 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 1.25s ease-out forwards;
+      }
+    }
+  }
+  &--6 {
+    .animTarget {
+      opacity: 0;
+    }
+    &.triggered {
+      .animTarget {
+        opacity: 1;
+        animation: fadeIn 2s ease-out forwards;
+      }
+    }
+  }
 }
 
 aside {
@@ -239,24 +1073,209 @@ aside {
   }
 }
 
-.animTarget {
-  opacity: 0;
-  transition: transform 1000ms ease-out, opacity 1000ms;
+.progressBar {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  width: 100%;
+  height: $progressBar-height;
+  background-color: rgba(64 64 64);
 }
-.triggered {
-  .animTarget {
-    opacity: 1;
-    // transition: translateY(0);
+
+@keyframes slideIn_up {
+  from {
+    transform: translate(0, 2.5rem);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes slideIn_down {
+  from {
+    transform: translate(0, -2rem);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes slideIn_left {
+  from {
+    transform: translate(-2.5rem, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes slideIn_right {
+  from {
+    transform: translate(2.5rem, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: opacity(1);
+  }
+}
+@keyframes wigglerot {
+  0% {
+    transform: rotateZ(10);
+  }
+  8% {
+    transform: rotateZ(-9deg);
+  }
+  16% {
+    transform: rotateZ(7deg);
+  }
+  24% {
+    transform: rotateZ(-6deg);
+  }
+  32% {
+    transform: rotateZ(4deg);
+  }
+  40% {
+    transform: rotateZ(-3deg);
+  }
+  60% {
+    transform: rotateZ(2deg);
+  }
+  80% {
+    transform: rotateZ(-1deg);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+@keyframes wigglepos {
+  0% {
+    transform: translate(20px, 15px);
+  }
+  8% {
+    transform: translate(-17px, -12px);
+  }
+  17% {
+    transform: translate(14px, 9px);
+  }
+  25% {
+    transform: translate(-10px, 7px);
+  }
+  40% {
+    transform: translate(6px, -6px);
+  }
+  55% {
+    transform: translate(3px, 3px);
+  }
+  75% {
+    transform: translate(-1px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
 
-#prologue1 {
-  .animTarget {
-    transition: transform 500ms ease-in-out;
+@media (width < 70rem) {
+  .container {
+    overflow: hidden;
+    width: min(80vh, 1100px);
+    margin-inline: auto;
   }
-  .triggered {
-    .animTarget {
-      transform: translateX(0);
+  #prologue1 {
+    .container {
+      overflow: visible;
+      width: min(70vh, 1100px);
+      margin-inline: auto;
     }
+  }
+  .chapter--begin {
+    padding-top: 10rem;
+  }
+}
+
+@media (width < 70rem) {
+  .stickyWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  main {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  aside {
+    top: calc(-1px + $progressBar-height);
+    border-radius: 0 0 12px 12px;
+    display: grid;
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    height: fit-content;
+    padding-block: 0.5rem 1rem;
+    padding-inline: unset;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    h3 {
+      margin: 0;
+      padding-inline: 2rem;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    ol {
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      align-items: center;
+      gap: 2rem;
+      padding-block: 0;
+
+      // a:first-of-type li {
+      //   margin-left: $wrapper-padding-inline;
+      // }
+      // a:last-of-type li {
+      //   margin-right: $wrapper-padding-inline;
+      // }
+    }
+  }
+  .progressBar {
+    top: -1px;
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+#section9 {
+  .container {
+    background-color: #222222;
+    padding-bottom: 12rem;
+  }
+  .wrapper {
+    padding-block: 8rem;
+    display: block;
+    justify-content: center;
+  }
+  .grad1 {
+    width: 100%;
+    min-height: 1200px;
+    background: linear-gradient(to bottom, #f3f3f3, #222222);
+  }
+  .solid {
+    width: 100%;
+    min-height: 400px;
+    background-color: #222222;
+  }
+  h3 {
+    padding-block: 8rem;
+    color: white;
+  }
+  #logo {
+    max-width: 80%;
   }
 }

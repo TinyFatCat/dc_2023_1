@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   background-color: #c7c7c7;
   font-family: "cube";
   line-height: 1.6;
@@ -58,13 +59,10 @@ p {
 
 img,
 video,
+iframe,
 svg {
   max-width: 100%;
   overflow: hidden;
-}
-
-section {
-  text-align: center;
 }
 
 prologue {
@@ -83,21 +81,28 @@ prologue p {
   color: white;
   background-color: #222222;
 }
+#prologue0 .animTarget {
+  animation: fadeIn 2s ease-in forwards, slideIn_down 3s ease-out forwards;
+}
 
 #prologue1 {
-  padding-block: 2rem 2rem;
+  padding-block: 2rem;
   background-color: #2d2d2d;
 }
 #prologue1 .container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   background-color: unset;
 }
 #prologue1 .wrapper {
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 18.5rem;
+  width: max(30%, 240px);
+  height: max(60vh, 560px);
+  margin-inline: auto;
   border-radius: 0.75rem;
   margin: 1rem;
   background-color: #f7f7f7;
@@ -108,6 +113,9 @@ prologue p {
 #prologue1 .wrapper p {
   padding-inline: 1rem;
   color: #555555;
+}
+#prologue1 .animTarget {
+  animation: fadeIn 2.5s ease-in-out forwards, slideIn_up 3s ease-out forwards;
 }
 
 #prologue2 {
@@ -129,6 +137,12 @@ prologue p {
 }
 #prologue2 p {
   color: #888888;
+}
+#prologue2 .animTarget {
+  transform: translateY(0);
+}
+#prologue2 .triggered .animTarget {
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-in forwards;
 }
 
 .switch {
@@ -156,13 +170,17 @@ prologue p {
   padding-block: 3rem;
   color: #383838;
 }
+.chapter--begin--typo.triggered .animTarget {
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-inline: auto;
-  max-width: 75rem;
+  width: min(80%, 1100px);
   background-color: #f3f3f3;
 }
 .container .wrapper {
@@ -171,15 +189,47 @@ prologue p {
   justify-content: center;
 }
 .container .wrapper--dialog {
+  overflow: hidden;
   background-image: url("../img/texture/tex_vintage.jpg");
   background-position: center;
-  padding-block: 20rem;
+  padding-inline: 16rem;
+  padding-block: 10rem;
   margin-bottom: 4rem;
   text-align: center;
   color: rgb(36, 36, 36);
 }
 .container .wrapper--dialog h2 {
   padding-block: 0;
+}
+.container .wrapper--card {
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  margin-bottom: 12rem;
+}
+.container .wrapper--card--content {
+  position: relative;
+  text-align: right;
+  min-width: 60%;
+  margin-inline: 0.5rem;
+}
+.container .wrapper--card--content h3 {
+  position: absolute;
+  padding: 0;
+  font-size: 3.5rem;
+  color: #ffffff;
+  bottom: 1rem;
+  right: 2rem;
+}
+.container .wrapper--card--content p {
+  position: absolute;
+  padding: 0;
+  color: #ffffff;
+  bottom: 5.4rem;
+  right: 2rem;
+}
+.container .wrapper--card--content img {
+  border-radius: 16px;
 }
 .container p {
   padding-block: 2rem 6rem;
@@ -196,6 +246,464 @@ main {
   z-index: 1;
   grid-column: 1/span 2;
   grid-row: 1;
+  text-align: center;
+}
+
+#s1--1 .animTarget {
+  opacity: 0;
+}
+#s1--1.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 0.75s ease-out forwards, fadeIn 1.5s ease-out forwards;
+}
+#s1--2 .animTarget {
+  opacity: 0;
+}
+#s1--2.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s1--3 .animTarget {
+  opacity: 0;
+}
+#s1--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 1.5s ease-out forwards, fadeIn 1.5s ease-out forwards, wigglepos 1.5s ease-out forwards;
+}
+#s1--4 .animTarget {
+  opacity: 0;
+}
+#s1--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+
+#s2--1 .animTarget {
+  opacity: 0;
+}
+#s2--1.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2.5s ease-out forwards;
+}
+#s2--2 .animTarget {
+  opacity: 0;
+}
+#s2--2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1.5s ease-out forwards, fadeIn 2s ease-out forwards;
+}
+#s2--3 .animTarget {
+  opacity: 0;
+}
+#s2--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 2s ease-out forwards, fadeIn 2s ease-out forwards;
+}
+
+#s3--1 .animTarget {
+  opacity: 0;
+}
+#s3--1.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 2s ease-out forwards, fadeIn 1.5s ease-out forwards;
+}
+#s3--2 .animTarget {
+  opacity: 0;
+}
+#s3--2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_left 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s3--3 .animTarget {
+  opacity: 0;
+}
+#s3--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_right 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s3--4 .animTarget {
+  opacity: 0;
+}
+#s3--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s3--5 .animTarget {
+  opacity: 0;
+}
+#s3--5.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s3--6 .animTarget {
+  opacity: 0;
+}
+#s3--6.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+
+#s4--1 .animTarget {
+  opacity: 0;
+}
+#s4--1.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 2s ease-out forwards, fadeIn 1.5s ease-out forwards;
+}
+#s4--2 .animTarget {
+  opacity: 0;
+}
+#s4--2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_left 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s4--3 .animTarget {
+  opacity: 0;
+}
+#s4--3.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+#s4--4 .animTarget {
+  opacity: 0;
+}
+#s4--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+
+#s5--1 .animTarget {
+  opacity: 0;
+}
+#s5--1.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_right 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s5--2 .animTarget {
+  opacity: 0;
+}
+#s5--2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 2s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s5--3 .animTarget {
+  opacity: 0;
+}
+#s5--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_right 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s5--4 .animTarget {
+  opacity: 0;
+}
+#s5--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s5--5 .animTarget {
+  opacity: 0;
+}
+#s5--5.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_right 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s5--6 .animTarget {
+  opacity: 0;
+}
+#s5--6.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 0.75s ease-out forwards;
+}
+#s5--7 .animTarget {
+  opacity: 0;
+}
+#s5--7.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1.5s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+
+#s6--1 .animTarget {
+  opacity: 0;
+}
+#s6--1.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1s ease-in forwards;
+}
+#s6--2 .animTarget {
+  opacity: 0;
+}
+#s6--2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 2s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s6--3 .animTarget {
+  opacity: 0;
+}
+#s6--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_left 1.25s ease-out forwards, fadeIn 0.75s ease-out forwards;
+}
+#s6--4 .animTarget {
+  opacity: 0;
+}
+#s6--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1.25s ease-out forwards, fadeIn 0.75s ease-out forwards;
+}
+#s6--5 .animTarget {
+  opacity: 0;
+}
+#s6--5.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+
+#s7--1 .animTarget {
+  opacity: 0;
+}
+#s7--1.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+#s7--2 .animTarget {
+  opacity: 0;
+}
+#s7--2.triggered .animTarget {
+  opacity: 1;
+  animation: wigglepos 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s7--2-2 .animTarget {
+  opacity: 0;
+}
+#s7--2-2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 0.75s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s7--3 .animTarget {
+  opacity: 0;
+}
+#s7--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 0.75s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s7--3-2 .animTarget {
+  opacity: 0;
+}
+#s7--3-2.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1s ease-out forwards;
+}
+#s7--4 .animTarget {
+  opacity: 0;
+}
+#s7--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 1.5s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s7--5 .animTarget {
+  opacity: 0;
+}
+#s7--5.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_left 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s7--6 .animTarget {
+  opacity: 0;
+}
+#s7--6.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1.5s ease-out forwards, fadeIn 2s ease-out forwards;
+}
+#s7--7 .animTarget {
+  opacity: 0;
+}
+#s7--7.triggered .animTarget {
+  opacity: 1;
+  animation: wigglepos 1.25s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s7--8 .animTarget {
+  opacity: 0;
+}
+#s7--8.triggered .animTarget {
+  opacity: 1;
+  animation: wigglepos 0.75s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s7--9 .animTarget {
+  opacity: 0;
+}
+#s7--9.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 2s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s7--10 .animTarget {
+  opacity: 0;
+}
+#s7--10.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s7--11 .animTarget {
+  opacity: 0;
+}
+#s7--11.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_left 1s ease-out forwards, fadeIn 2s ease-out forwards;
+}
+#s7--12 .animTarget {
+  opacity: 0;
+}
+#s7--12.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s7--13 .animTarget {
+  opacity: 0;
+}
+#s7--13.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s7--14 .animTarget {
+  opacity: 0;
+}
+#s7--14.triggered .animTarget {
+  opacity: 1;
+  animation: wigglepos 1s ease-out forwards, fadeIn 1.5s ease-out forwards;
+}
+
+#s8--1 .animTarget {
+  opacity: 0;
+}
+#s8--1.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1s ease-out forwards;
+}
+#s8--2 .animTarget {
+  opacity: 0;
+}
+#s8--2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 2s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s8--2-2 .animTarget {
+  opacity: 0;
+}
+#s8--2-2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s8--2-2 .animTarget {
+  opacity: 0;
+}
+#s8--2-2.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s8--3 .animTarget {
+  opacity: 0;
+}
+#s8--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 0.75s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s8--3-2 .animTarget {
+  opacity: 0;
+}
+#s8--3-2.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1s ease-out forwards;
+}
+#s8--4 .animTarget {
+  opacity: 0;
+}
+#s8--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 1.5s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s8--5 .animTarget {
+  opacity: 0;
+}
+#s8--5.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_left 1.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
+}
+#s8--6 .animTarget {
+  opacity: 0;
+}
+#s8--6.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 2s ease-out forwards;
+}
+#s8--7 .animTarget {
+  opacity: 0;
+}
+#s8--7.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_down 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s8--8 .animTarget {
+  opacity: 0;
+}
+#s8--8.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s8--9 .animTarget {
+  opacity: 0;
+}
+#s8--9.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1s ease-out forwards;
+}
+#s8--10 .animTarget {
+  opacity: 0;
+}
+#s8--10.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+#s9--1 .animTarget {
+  opacity: 0;
+}
+#s9--1.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s9--2 .animTarget {
+  opacity: 0;
+}
+#s9--2.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+#s9--3 .animTarget {
+  opacity: 0;
+}
+#s9--3.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s9--4 .animTarget {
+  opacity: 0;
+}
+#s9--4.triggered .animTarget {
+  opacity: 1;
+  animation: slideIn_up 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+#s9--5 .animTarget {
+  opacity: 0;
+}
+#s9--5.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 1.25s ease-out forwards;
+}
+#s9--6 .animTarget {
+  opacity: 0;
+}
+#s9--6.triggered .animTarget {
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
 }
 
 aside {
@@ -243,18 +751,196 @@ aside a {
   text-decoration: none;
 }
 
-.animTarget {
-  opacity: 0;
-  transition: transform 1000ms ease-out, opacity 1000ms;
+.progressBar {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  grid-column: 1/span 2;
+  grid-row: 1;
+  width: 100%;
+  height: 0.75rem;
+  background-color: rgb(64, 64, 64);
 }
 
-.triggered .animTarget {
-  opacity: 1;
+@keyframes slideIn_up {
+  from {
+    transform: translate(0, 2.5rem);
+  }
+  to {
+    transform: translate(0, 0);
+  }
 }
-
-#prologue1 .animTarget {
-  transition: transform 500ms ease-in-out;
+@keyframes slideIn_down {
+  from {
+    transform: translate(0, -2rem);
+  }
+  to {
+    transform: translate(0, 0);
+  }
 }
-#prologue1 .triggered .animTarget {
-  transform: translateX(0);
+@keyframes slideIn_left {
+  from {
+    transform: translate(-2.5rem, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes slideIn_right {
+  from {
+    transform: translate(2.5rem, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: opacity(1);
+  }
+}
+@keyframes wigglerot {
+  0% {
+    transform: rotateZ(10);
+  }
+  8% {
+    transform: rotateZ(-9deg);
+  }
+  16% {
+    transform: rotateZ(7deg);
+  }
+  24% {
+    transform: rotateZ(-6deg);
+  }
+  32% {
+    transform: rotateZ(4deg);
+  }
+  40% {
+    transform: rotateZ(-3deg);
+  }
+  60% {
+    transform: rotateZ(2deg);
+  }
+  80% {
+    transform: rotateZ(-1deg);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+@keyframes wigglepos {
+  0% {
+    transform: translate(20px, 15px);
+  }
+  8% {
+    transform: translate(-17px, -12px);
+  }
+  17% {
+    transform: translate(14px, 9px);
+  }
+  25% {
+    transform: translate(-10px, 7px);
+  }
+  40% {
+    transform: translate(6px, -6px);
+  }
+  55% {
+    transform: translate(3px, 3px);
+  }
+  75% {
+    transform: translate(-1px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@media (width < 70rem) {
+  .container {
+    overflow: hidden;
+    width: min(80vh, 1100px);
+    margin-inline: auto;
+  }
+  #prologue1 .container {
+    overflow: visible;
+    width: min(70vh, 1100px);
+    margin-inline: auto;
+  }
+  .chapter--begin {
+    padding-top: 10rem;
+  }
+}
+@media (width < 70rem) {
+  .stickyWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  main {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  aside {
+    top: calc(-1px + 0.75rem);
+    border-radius: 0 0 12px 12px;
+    display: grid;
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-block: 0.5rem 1rem;
+    padding-inline: unset;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  aside h3 {
+    margin: 0;
+    padding-inline: 2rem;
+  }
+  aside::-webkit-scrollbar {
+    display: none;
+  }
+  aside ol {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 0;
+  }
+  .progressBar {
+    top: -1px;
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+#section9 .container {
+  background-color: #222222;
+  padding-bottom: 12rem;
+}
+#section9 .wrapper {
+  padding-block: 8rem;
+  display: block;
+  justify-content: center;
+}
+#section9 .grad1 {
+  width: 100%;
+  min-height: 1200px;
+  background: linear-gradient(to bottom, #f3f3f3, #222222);
+}
+#section9 .solid {
+  width: 100%;
+  min-height: 400px;
+  background-color: #222222;
+}
+#section9 h3 {
+  padding-block: 8rem;
+  color: white;
+}
+#section9 #logo {
+  max-width: 80%;
 }

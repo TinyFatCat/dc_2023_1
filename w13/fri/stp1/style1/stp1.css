@@ -164,6 +164,8 @@ footer .wrapper {
 }
 @media (width < 59.2rem) {
   aside ol {
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
   }
 }
